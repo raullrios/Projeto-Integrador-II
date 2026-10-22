@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block title %}Painel Gerencial e Financeiro | LocaInclusiva{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+
+    <!-- Título da Seção e Ações Rápidas -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-4 border-b border-slate-200 gap-4">
+        <div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Painel de Controle Financeiro & Operacional</h1>
+            <p class="text-sm text-slate-600 mt-1">Monitoramento em tempo real do faturamento, custos de manutenção assistiva e metas ecológicas.</p>
+        </div>
+        <div class="flex items-center gap-3">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Sistema Ativo (Mês Atual)
+            </span>
+            <a href="{{ url_for('reservas') }}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-sky-700 hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-colors">
+                + Nova Reserva Inclusiva
+            </a>
+        </div>
+    </div>
+
+    <!-- Indicadores Financeiros Centrais (Cards) -->
+    <section aria-labelledby="titulo-resumo-financeiro">
+        <h2 id="titulo-resumo-financeiro" class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+            <span>💵</span> Balanço Financeiro Mensal
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Card: Faturamento Bruto -->
+            <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 border-l-4 border-l-emerald-600 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Faturamento Bruto</h3>
+                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">+12% vs. mês anterior</span>
+                </div>
+                <p class="text-3xl font-extrabold text-emerald-700 mt-3 tracking-tight">{{ dados.receita_bruta }}</p>
+                <p class="text-xs text-slate-500 mt-2">Receitas com diárias, seguros e taxas de locação.</p>
+            </article>
+
+            <!-- Card: Custos Operacionais e Manutenção -->
+            <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 border-l-4 border-l-rose-600 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Custos & Manutenção de Kits</h3>
+                    <span class="text-xs font-medium text-slate-600 bg-slate-100 px-2 py-0.5 rounded">Revisão Preventiva</span>
+                </div>
+                <p class="text-3xl font-extrabold text-rose-700 mt-3 tracking-tight">{{ dados.custos_manutencao }}</p>
+                <p class="text-xs text-slate-500 mt-2">Calibração de kits manuais, higienização e peças.</p>
+            </article>
+
+            <!-- Card: Lucro Líquido Realizado -->
+            <article class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 border-l-4 border-l-sky-600 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Resultado Líquido</h3>
+                    <span class="text-xs font-medium text-sky-800 bg-sky-50 px-2 py-0.5 rounded border border-sky-200">Margem: 81.4%</span>
+                </div>
+                <p class="text-3xl font-extrabold text-sky-800 mt-3 tracking-tight">{{ dados.lucro_liquido }}</p>
+                <p class="text-xs text-slate-500 mt-2">Saldo apurado disponível para reinvestimento em frota.</p>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Métricas Estratégicas: Inclusão e Sustentabilidade -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6" aria-labelledby="titulo-desempenho">
+        
+        <!-- KPIs Operacionais Inclusivos -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <h2 id="titulo-desempenho" class="text-base font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center justify-between">
+                <span>Desempenho da Frota Assistiva & Verde</span>
+                <span class="text-xs text-slate-500 font-normal">Meta Q4/2026</span>
+            </h2>
+            <div class="mt-5 space-y-5">
+                <div>
+                    <div class="flex justify-between items-center text-sm mb-1">
+                        <span class="font-medium text-slate-700">Taxa de Ocupação (Veículos Adaptados PCD)</span>
+                        <span class="font-extrabold text-sky-800">{{ dados.taxa_ocupacao_pcd }}</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                        <div class="bg-sky-600 h-3 rounded-full" style="width: 82%"></div>
+                    </div>
+                    <p class="text-xs text-amber-700 mt-1 font-medium">⚠️ Alerta de capacidade: Demanda elevada requer expansão de kits.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 pt-2">
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                        <span class="text-xs text-slate-500 block">Frota Sustentável Ativa</span>
+                        <strong class="text-xl font-bold text-emerald-700">{{ dados.frota_sustentavel_ativa }} veículos</strong>
+                        <span class="text-[11px] text-slate-500 block mt-0.5">Elétricos e Híbridos Flex</span>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                        <span class="text-xs text-slate-500 block">Redução Estimada de CO₂</span>
+                        <strong class="text-xl font-bold text-emerald-700">{{ dados.reducao_co2_estimada }}</strong>
+                        <span class="text-[11px] text-slate-500 block mt-0.5">Economia ecológica local</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recomendações Práticas para Tomada de Decisão -->
+        <div class="bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded-xl shadow-sm border border-sky-100 flex flex-col justify-between">
+            <div>
+                <h2 class="text-base font-bold text-sky-950 border-b border-sky-200 pb-3 flex items-center gap-2">
+                    <span>💡</span> Recomendações Práticas Gerenciais
+                </h2>
+                <ul class="mt-4 space-y-3">
+                    {% for dica in dicas %}
+                        <li class="flex items-start gap-2.5 text-sm text-slate-700">
+                            <span class="text-sky-600 font-bold mt-0.5">✔</span>
+                            <span>{{ dica }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="mt-6 pt-3 border-t border-sky-200 text-xs text-slate-500 flex justify-between items-center">
+                <span>Relatório analítico gerado com base nas diretrizes da UFMS Digital.</span>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Tabela de Movimentações Recentes -->
+    <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden" aria-labelledby="titulo-reservas-recentes">
+        <div class="p-6 border-b border-slate-200 flex justify-between items-center">
+            <h2 id="titulo-reservas-recentes" class="text-base font-bold text-slate-800">
+                Últimas Locações Registradas no Sistema
+            </h2>
+            <a href="{{ url_for('reservas') }}" class="text-xs font-semibold text-sky-700 hover:text-sky-900 transition-colors">
+                Ver todas as reservas →
+            </a>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm text-slate-600">
+                <thead class="bg-slate-50 text-xs uppercase text-slate-500 border-b border-slate-200 font-semibold">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Código</th>
+                        <th scope="col" class="px-6 py-3">Cliente / Adaptação</th>
+                        <th scope="col" class="px-6 py-3">Veículo Alocado</th>
+                        <th scope="col" class="px-6 py-3">Período</th>
+                        <th scope="col" class="px-6 py-3">Valor Faturado</th>
+                        <th scope="col" class="px-6 py-3">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    {% for r in reservas_recentes %}
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 font-mono font-medium text-slate-800">{{ r.codigo }}</td>
+                            <td class="px-6 py-4 font-medium text-slate-900">{{ r.cliente }}</td>
+                            <td class="px-6 py-4">{{ r.veiculo }}</td>
+                            <td class="px-6 py-4 text-xs">{{ r.periodo }} ({{ r.dias }} dias)</td>
+                            <td class="px-6 py-4 font-bold text-slate-900">{{ r.total }}</td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 text-xs rounded-full font-semibold {% if r.status == 'Em Andamento' %}bg-amber-100 text-amber-800{% else %}bg-emerald-100 text-emerald-800{% endif %}">
+                                    {{ r.status }}
+                                </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
+
