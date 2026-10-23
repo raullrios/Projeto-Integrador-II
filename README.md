@@ -101,12 +101,5 @@ Caso deseje clonar e rodar o código-fonte em seu ambiente de desenvolvimento:
 
 ---
 
-## 🔗 Rastreabilidade Acadêmica (Projetos Integradores I, II e III)
-* **Projeto Integrador I:** Mapeamento de problemas em Campo Grande/MS, levantamento de requisitos de acessibilidade PCD e sustentabilidade.
-* **Projeto Integrador II:** Implementação da aplicação web funcional com Flask, Jinja2, Tailwind CSS e geração de vouchers de reserva.
-* **Projeto Integrador III:** Execução da **Inspeção Formal de Artefatos** (requisitos, arquitetura e código), catalogação de defeitos de concorrência e validações temporais, e implementação das soluções de saneamento.
-
----
-
 ## 📄 Licença e Termos de Uso
-Desenvolvido por **Raul de Moura Junqueira Rios** para fins didáticos, avaliativos e extensionistas no **Programa de Extensão UFMS Digital (95DX7.200525)**.
+Desenvolvido por **Raul de Moura Junqueira Rios** para fins didáticos e avaliativos no **Programa de Extensão UFMS Digital (95DX7.200525)**.
