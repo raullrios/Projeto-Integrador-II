@@ -1,141 +1,186 @@
 {% extends 'base.html' %}
 
-{% block title %}Portal Acessível de Reservas | LocaInclusiva{% endblock %}
+{% block title %}Portal Acessível de Reservas | MobilityPrime{% endblock %}
 
 {% block content %}
 <div class="space-y-8">
 
-    <!-- Cabeçalho da Página -->
-    <div class="pb-4 border-b border-slate-200">
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Portal de Reservas Inclusivas & Sustentáveis</h1>
-        <p class="text-sm text-slate-600 mt-1">Selecione veículos especialmente adaptados para suas necessidades de mobilidade com transparência tarifária.</p>
+    <!-- Cabeçalho do Portal de Reservas -->
+    <div class="pb-6 border-b border-slate-200">
+        <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-900 border border-blue-200">
+                ♿ Mobilidade Inclusiva & Verde
+            </span>
+            <span class="text-xs text-slate-500">Isenção de taxa de kit assistivo</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+            Portal Acessível de Reservas Veiculares
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+            Selecione veículos especialmente adaptados com comandos manuais, rampas de embarque ou tração 100% elétrica. Ao concluir, um voucher eletrônico será gerado instantaneamente.
+        </p>
     </div>
 
-    <!-- Seção de Formulário e Vitrine -->
+    <!-- Seção de Reserva e Vitrine de Automóveis -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        <!-- Formulário Acessível de Reserva (1 coluna no desktop) -->
+        <!-- Formulário Acessível de Solicitação de Reserva (Sticky no Desktop) -->
         <div class="lg:col-span-1">
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 sticky top-24">
-                <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
-                    <span>📝</span> Solicitar Nova Reserva
-                </h2>
+            <div class="bg-white p-6 sm:p-7 rounded-2xl shadow-sm border border-slate-200/80 sticky top-28">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <span>📝</span> Solicitar Nova Reserva
+                    </h2>
+                    <span class="text-[11px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Check-in Digital</span>
+                </div>
                 
-                <form action="{{ url_for('reservas') }}" method="POST" class="mt-4 space-y-4">
+                <form action="{{ url_for('reservas') }}" method="POST" class="mt-5 space-y-4">
                     
-                    <!-- Campo: Nome do Condutor / Responsável -->
+                    <!-- Campo: Nome Completo -->
                     <div>
-                        <label for="campo-cliente" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
-                            Nome Completo do Condutor / Passageiro *
+                        <label for="campo-cliente" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                            Nome Completo do Condutor / Locatário *
                         </label>
                         <input type="text" id="campo-cliente" name="cliente" required 
                                placeholder="Ex: Carlos Eduardo da Silva"
-                               class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-lg text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
+                               class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm shadow-sm placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all">
                     </div>
 
-                    <!-- Campo: Tipo de Adaptação / Necessidade Assistiva -->
+                    <!-- Campo: Necessidade Assistiva -->
                     <div>
-                        <label for="campo-necessidade" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
-                            Necessidade de Acessibilidade (PCD) *
+                        <label for="campo-necessidade" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                            Equipamento Assistivo Necessário (PCD) *
                         </label>
                         <select id="campo-necessidade" name="tipo_necessidade" required
-                                class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
-                            <option value="Condutor PCD (Membros Inferiores)">Condutor PCD - Acelerador/Freio Manual</option>
-                            <option value="Condutor PCD (Monoparesia)">Condutor PCD - Pomo Giratório e Comandos Satélite</option>
-                            <option value="Passageiro Cadeirante">Passageiro Cadeirante - Rampa de Acesso Traseira</option>
-                            <option value="Condutor com Membro Esquerdo">Condutor - Inversão de Pedal de Aceleração</option>
-                            <option value="Mobilidade Geral / Sustentável">Uso Geral / Frota Sustentável (Sem kit)</option>
+                                class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all">
+                            <option value="Condutor PCD - Acelerador/Freio Manual">Condutor PCD - Acelerador e Freio Manual (Puxa-Empurra)</option>
+                            <option value="Condutor PCD - Pomo Giratório e Satélite">Condutor PCD - Pomo Giratório no Volante + Satélite</option>
+                            <option value="Passageiro Cadeirante - Rampa Traseira">Passageiro Cadeirante - Rampa de Acesso Traseira</option>
+                            <option value="Condutor PCD - Inversão de Pedal">Condutor PCD - Inversão de Pedal de Aceleração (Pé Esquerdo)</option>
+                            <option value="Mobilidade Sustentável (Sem kit assistivo)">Sem Adaptação (Foco em Baixa Emissão CO₂)</option>
                         </select>
                     </div>
 
-                    <!-- Campo: Seleção do Veículo da Frota -->
+                    <!-- Campo: Veículo Selecionado -->
                     <div>
-                        <label for="campo-veiculo" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
-                            Veículo Desejado *
+                        <label for="campo-veiculo" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                            Automóvel Desejado *
                         </label>
                         <select id="campo-veiculo" name="veiculo_id" required
-                                class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
+                                class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all">
                             {% for v in veiculos %}
-                                <option value="{{ v.id }}" {% if v.status != 'Disponível' %}disabled{% endif %}>
+                                <option value="{{ v.id }}" {% if v.status != 'Disponível' %}disabled class="text-slate-400 bg-slate-100"{% endif %}>
                                     {{ v.modelo }} - R$ {{ "%.2f"|format(v.valor_diaria) }}/dia {% if v.status != 'Disponível' %}({{ v.status }}){% endif %}
                                 </option>
                             {% endfor %}
                         </select>
                     </div>
 
-                    <!-- Datas: Retirada e Devolução com Validação -->
-                    <div class="grid grid-cols-2 gap-3">
+                    <!-- Datas: Retirada e Devolução -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                            <label for="campo-retirada" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
+                            <label for="campo-retirada" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                                 Data Retirada *
                             </label>
                             <input type="date" id="campo-retirada" name="data_retirada" required
-                                   class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
+                                   class="mt-1.5 block w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600">
                         </div>
                         <div>
-                            <label for="campo-devolucao" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide">
+                            <label for="campo-devolucao" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                                 Data Devolução *
                             </label>
                             <input type="date" id="campo-devolucao" name="data_devolucao" required
-                                   class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
+                                   class="mt-1.5 block w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600">
                         </div>
+                    </div>
+
+                    <!-- Horário de Retirada -->
+                    <div>
+                        <label for="campo-horario" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                            Horário Previsto para Retirada
+                        </label>
+                        <select id="campo-horario" name="horario_retirada"
+                                class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600">
+                            <option value="08:30">08:30h (Manhã)</option>
+                            <option value="10:00" selected>10:00h (Manhã)</option>
+                            <option value="14:00">14:00h (Tarde)</option>
+                            <option value="16:30">16:30h (Tarde)</option>
+                        </select>
                     </div>
 
                     <div class="pt-2">
                         <button type="submit" 
-                                class="w-full flex justify-center items-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-sky-700 hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-colors">
-                            Confirmar Reserva e Gerar Faturamento
+                                class="w-full flex justify-center items-center py-3 px-4 rounded-xl shadow-md text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-blue-700 via-indigo-700 to-sky-700 hover:from-blue-800 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200">
+                            Confirmar Reserva & Emitir Voucher
                         </button>
                     </div>
-                    <p class="text-[11px] text-slate-500 text-center">
-                        🔒 Proteção contra conflito de reserva para veículos assistidos únicos.
+
+                    <p class="text-[11px] text-slate-400 text-center leading-relaxed">
+                        🔒 Validação temporal em tempo real com controle contra duplicidade de reservas assistidas.
                     </p>
                 </form>
             </div>
         </div>
 
-        <!-- Vitrine de Veículos Disponíveis (2 colunas no desktop) -->
+        <!-- Vitrine de Veículos com Imagens Reais e Coerentes -->
         <div class="lg:col-span-2 space-y-6">
-            <h2 class="text-lg font-bold text-slate-800 flex items-center justify-between">
-                <span>Catálogo de Veículos com Homologação Assistiva</span>
-                <span class="text-xs font-normal text-slate-500">Campo Grande - MS</span>
-            </h2>
+            <div class="flex items-center justify-between">
+                <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <span>🚗</span> Modelos com Homologação Assistiva & Baixa Emissão
+                </h2>
+                <span class="text-xs text-slate-500 font-mono">5 unidades catalogadas</span>
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {% for v in veiculos %}
-                    <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
-                        <div class="relative h-44 bg-slate-100 overflow-hidden">
-                            <img src="{{ v.foto }}" alt="Foto do veículo {{ v.modelo }}" class="w-full h-full object-cover">
+                    <article class="bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden flex flex-col justify-between hover:shadow-lg hover:border-slate-300 transition-all duration-300 group">
+                        
+                        <!-- Imagem do Veículo com Fallback e Badge de Status -->
+                        <div class="relative h-48 bg-slate-800 overflow-hidden">
+                            <img src="{{ v.foto }}" 
+                                 alt="Fotografia do automóvel {{ v.modelo }}" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 loading="lazy"
+                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80';">
+                            
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+
+                            <!-- Badges Superiores -->
                             <div class="absolute top-3 right-3">
-                                <span class="px-2.5 py-1 text-xs rounded-full font-bold shadow-sm {% if v.status == 'Disponível' %}bg-emerald-600 text-white{% elif v.status == 'Locado' %}bg-amber-500 text-white{% else %}bg-rose-600 text-white{% endif %}">
+                                <span class="px-2.5 py-1 text-xs rounded-full font-bold shadow-md ring-1 ring-white/20 {% if v.status == 'Disponível' %}bg-emerald-600 text-white{% elif v.status == 'Locado' %}bg-amber-600 text-white{% else %}bg-rose-600 text-white{% endif %}">
                                     {{ v.status }}
                                 </span>
                             </div>
-                            <div class="absolute bottom-3 left-3">
-                                <span class="px-2 py-0.5 text-[11px] rounded bg-slate-900/80 text-white backdrop-blur-sm font-medium">
+
+                            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center text-white">
+                                <span class="px-2.5 py-1 text-[11px] rounded-lg bg-navy-950/80 backdrop-blur-md font-semibold ring-1 ring-white/10">
                                     🌱 {{ v.emissao_co2 }}
                                 </span>
                             </div>
                         </div>
 
+                        <!-- Detalhes do Automóvel -->
                         <div class="p-5 flex-grow flex flex-col justify-between">
                             <div>
-                                <span class="text-xs font-semibold text-sky-800 uppercase tracking-wider">{{ v.categoria }}</span>
-                                <h3 class="text-base font-bold text-slate-900 mt-1">{{ v.modelo }}</h3>
+                                <span class="text-[11px] font-bold text-blue-700 uppercase tracking-widest block">{{ v.categoria }}</span>
+                                <h3 class="text-base font-extrabold text-slate-900 mt-1">{{ v.modelo }}</h3>
                                 
-                                <div class="mt-3 bg-sky-50 p-3 rounded-lg border border-sky-100">
-                                    <span class="text-[11px] font-bold text-sky-900 uppercase block">Adaptação Assistiva Instalada:</span>
-                                    <p class="text-xs font-medium text-slate-700 mt-0.5">♿ {{ v.adaptacao_pcd }}</p>
+                                <div class="mt-3.5 bg-slate-50 p-3 rounded-xl border border-slate-200/70">
+                                    <span class="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider block">Equipamento Assistivo Instalado:</span>
+                                    <p class="text-xs font-semibold text-slate-800 mt-1 flex items-start gap-1.5">
+                                        <span class="text-blue-700">♿</span>
+                                        <span>{{ v.adaptacao_pcd }}</span>
+                                    </p>
                                 </div>
                             </div>
 
-                            <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
+                            <div class="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between">
                                 <div>
-                                    <span class="text-xs text-slate-500 block">Diária base</span>
-                                    <span class="text-lg font-extrabold text-slate-900">R$ {{ "%.2f"|format(v.valor_diaria) }}</span>
+                                    <span class="text-[11px] text-slate-400 block font-medium">Diária Regular</span>
+                                    <span class="text-xl font-black text-slate-900">R$ {{ "%.2f"|format(v.valor_diaria) }}</span>
                                 </div>
-                                <span class="text-xs text-slate-600 font-medium bg-slate-100 px-2.5 py-1 rounded">
-                                    Sem taxa extra de kit
+                                <span class="text-xs text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200 font-bold">
+                                    Zero taxa de adaptação
                                 </span>
                             </div>
                         </div>
@@ -146,38 +191,55 @@
 
     </div>
 
-    <!-- Tabela Geral de Reservas Registradas -->
-    <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mt-10">
-        <div class="p-6 border-b border-slate-200">
-            <h2 class="text-lg font-bold text-slate-800">
-                Histórico Geral de Contratos e Reservas
-            </h2>
-            <p class="text-xs text-slate-500 mt-1">Registros vinculados à conciliação financeira do sistema.</p>
+    <!-- Tabela Geral de Contratos e Vouchers -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden mt-12" aria-labelledby="titulo-todas-reservas">
+        <div class="p-6 border-b border-slate-200/80 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+                <h2 id="titulo-todas-reservas" class="text-base font-bold text-slate-900">
+                    Histórico Geral de Contratos de Locação
+                </h2>
+                <p class="text-xs text-slate-500 mt-0.5">Todos os contratos possuem comprovante e voucher eletrônico individual para conferência.</p>
+            </div>
         </div>
+
         <div class="overflow-x-auto">
             <table class="w-full text-left text-sm text-slate-600">
-                <thead class="bg-slate-50 text-xs uppercase text-slate-500 border-b border-slate-200 font-semibold">
+                <thead class="bg-slate-50 text-xs uppercase text-slate-500 border-b border-slate-200/80 font-bold tracking-wider">
                     <tr>
-                        <th scope="col" class="px-6 py-3">Contrato</th>
-                        <th scope="col" class="px-6 py-3">Locatário / Perfil Assistivo</th>
-                        <th scope="col" class="px-6 py-3">Modelo Automotivo</th>
-                        <th scope="col" class="px-6 py-3">Vigência</th>
-                        <th scope="col" class="px-6 py-3">Faturamento</th>
-                        <th scope="col" class="px-6 py-3">Situação</th>
+                        <th scope="col" class="px-6 py-3.5">Localizador</th>
+                        <th scope="col" class="px-6 py-3.5">Locatário / Perfil Assistivo</th>
+                        <th scope="col" class="px-6 py-3.5">Modelo Automotivo</th>
+                        <th scope="col" class="px-6 py-3.5">Vigência</th>
+                        <th scope="col" class="px-6 py-3.5">Total Faturado</th>
+                        <th scope="col" class="px-6 py-3.5">Situação</th>
+                        <th scope="col" class="px-6 py-3.5 text-center">Voucher</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     {% for r in reservas %}
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-mono font-bold text-slate-800">{{ r.codigo }}</td>
-                            <td class="px-6 py-4 font-semibold text-slate-900">{{ r.cliente }}</td>
-                            <td class="px-6 py-4">{{ r.veiculo }}</td>
-                            <td class="px-6 py-4 text-xs">{{ r.periodo }} ({{ r.dias }} dias)</td>
-                            <td class="px-6 py-4 font-extrabold text-emerald-700">{{ r.total }}</td>
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="px-6 py-4 font-mono font-bold text-blue-700">
+                                <a href="{{ url_for('voucher', codigo=r.codigo) }}" class="hover:underline flex items-center gap-1.5">
+                                    <span>🎟️</span> {{ r.codigo }}
+                                </a>
+                            </td>
+                            <td class="px-6 py-4">
+                                <strong class="text-slate-900 block">{{ r.cliente }}</strong>
+                                <span class="text-xs text-slate-500">{{ r.tipo_necessidade }}</span>
+                            </td>
+                            <td class="px-6 py-4 text-xs font-medium text-slate-800">{{ r.veiculo }}</td>
+                            <td class="px-6 py-4 text-xs text-slate-500">{{ r.periodo }} ({{ r.dias }} dias)</td>
+                            <td class="px-6 py-4 font-black text-emerald-700">{{ r.total }}</td>
                             <td class="px-6 py-4">
                                 <span class="px-2.5 py-1 text-xs rounded-full font-bold {% if r.status == 'Confirmada' %}bg-sky-100 text-sky-800 border border-sky-300{% elif r.status == 'Em Andamento' %}bg-amber-100 text-amber-800 border border-amber-300{% else %}bg-emerald-100 text-emerald-800 border border-emerald-300{% endif %}">
                                     {{ r.status }}
                                 </span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <a href="{{ url_for('voucher', codigo=r.codigo) }}" 
+                                   class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-lg shadow-sm transition-colors">
+                                    <span>Ver Voucher</span>
+                                </a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -188,4 +250,3 @@
 
 </div>
 {% endblock %}
-

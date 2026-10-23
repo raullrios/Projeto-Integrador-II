@@ -1,79 +1,91 @@
 {% extends 'base.html' %}
 
-{% block title %}Frota & Kits de Acessibilidade | LocaInclusiva{% endblock %}
+{% block title %}Frota & Kits de Acessibilidade | MobilityPrime{% endblock %}
 
 {% block content %}
 <div class="space-y-8">
 
     <!-- Cabeçalho -->
-    <div class="pb-4 border-b border-slate-200">
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Gestão da Frota & Equipamentos Assistivos</h1>
-        <p class="text-sm text-slate-600 mt-1">Inventário detalhado de veículos com certificação ecológica e kits homologados de acessibilidade veicular.</p>
+    <div class="pb-6 border-b border-slate-200">
+        <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-900 border border-emerald-200">
+                🌱 Controle Operacional de Frotas
+            </span>
+            <span class="text-xs text-slate-500">Kits homologados pelo Contran / Inmetro</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+            Gestão da Frota & Equipamentos Assistivos
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+            Inventário técnico de automóveis de baixa emissão de carbono com kits certificados de adaptação para pessoas com deficiência.
+        </p>
     </div>
 
-    <!-- Resumo dos Kits e Equipamentos -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-            <span class="text-xs font-semibold text-slate-500 uppercase">Total de Veículos</span>
-            <p class="text-2xl font-bold text-slate-900 mt-1">18 Unidades</p>
-            <span class="text-xs text-emerald-600 font-medium">100% monitorados</span>
+    <!-- Resumo dos Indicadores da Frota -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Veículos Totais</span>
+            <p class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">18 Unidades</p>
+            <span class="text-[11px] text-emerald-700 font-bold block mt-1">100% monitorados</span>
         </div>
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-            <span class="text-xs font-semibold text-slate-500 uppercase">Kits Manuais PCD</span>
-            <p class="text-2xl font-bold text-sky-800 mt-1">12 Kits Ativos</p>
-            <span class="text-xs text-sky-700 font-medium">Calibração em dia</span>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Kits Manuais PCD</span>
+            <p class="text-2xl sm:text-3xl font-black text-blue-700 mt-1">12 Kits Ativos</p>
+            <span class="text-[11px] text-blue-800 font-bold block mt-1">Calibração semestral</span>
         </div>
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-            <span class="text-xs font-semibold text-slate-500 uppercase">Rampas de Embarque</span>
-            <p class="text-2xl font-bold text-slate-900 mt-1">3 Vans/Spins</p>
-            <span class="text-xs text-slate-500 font-medium">Acesso para cadeira</span>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Rampas de Embarque</span>
+            <p class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">3 Vans/Spins</p>
+            <span class="text-[11px] text-slate-500 font-medium block mt-1">Trava quádrupla</span>
         </div>
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-            <span class="text-xs font-semibold text-slate-500 uppercase">Propulsão Limpa</span>
-            <p class="text-2xl font-bold text-emerald-700 mt-1">14 Veículos</p>
-            <span class="text-xs text-emerald-600 font-medium">Elétricos e Híbridos</span>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Propulsão Limpa</span>
+            <p class="text-2xl sm:text-3xl font-black text-emerald-700 mt-1">14 Veículos</p>
+            <span class="text-[11px] text-emerald-700 font-bold block mt-1">Híbridos e 100% Elétricos</span>
         </div>
     </div>
 
     <!-- Tabela Geral da Frota -->
-    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-        <div class="p-6 border-b border-slate-200">
-            <h2 class="text-lg font-bold text-slate-800">
-                Inventário e Situação Operacional dos Veículos
-            </h2>
-            <p class="text-xs text-slate-500 mt-1">Acompanhamento de disponibilidade física e status de manutenção.</p>
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
+        <div class="p-6 border-b border-slate-200/80 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+                <h2 class="text-base font-bold text-slate-900">
+                    Inventário Técnico de Automóveis e Status Operacional
+                </h2>
+                <p class="text-xs text-slate-500 mt-0.5">Acompanhamento contínuo de disponibilidade, integridade mecânica e manutenções preventivas.</p>
+            </div>
         </div>
 
         <div class="overflow-x-auto">
             <table class="w-full text-left text-sm text-slate-600">
-                <thead class="bg-slate-50 text-xs uppercase text-slate-500 border-b border-slate-200 font-semibold">
+                <thead class="bg-slate-50 text-xs uppercase text-slate-500 border-b border-slate-200/80 font-bold tracking-wider">
                     <tr>
-                        <th scope="col" class="px-6 py-3">ID</th>
-                        <th scope="col" class="px-6 py-3">Modelo do Veículo</th>
-                        <th scope="col" class="px-6 py-3">Classificação Ecológica</th>
-                        <th scope="col" class="px-6 py-3">Tecnologia Assistiva (PCD)</th>
-                        <th scope="col" class="px-6 py-3">Tarifa Diária</th>
-                        <th scope="col" class="px-6 py-3">Disponibilidade</th>
+                        <th scope="col" class="px-6 py-3.5">ID</th>
+                        <th scope="col" class="px-6 py-3.5">Modelo do Veículo</th>
+                        <th scope="col" class="px-6 py-3.5">Classificação Ecológica</th>
+                        <th scope="col" class="px-6 py-3.5">Tecnologia Assistiva Instalada (PCD)</th>
+                        <th scope="col" class="px-6 py-3.5">Diária Base</th>
+                        <th scope="col" class="px-6 py-3.5">Disponibilidade</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     {% for v in veiculos %}
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-6 py-4 font-mono font-medium text-slate-500">#{{ "%02d"|format(v.id) }}</td>
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="px-6 py-4 font-mono font-bold text-slate-400">#{{ "%02d"|format(v.id) }}</td>
                             <td class="px-6 py-4 font-bold text-slate-900">{{ v.modelo }}</td>
                             <td class="px-6 py-4">
-                                <span class="inline-flex items-center gap-1 text-xs font-medium text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                                <span class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-lg border border-emerald-200">
                                     🌱 {{ v.categoria }}
                                 </span>
                             </td>
-                            <td class="px-6 py-4 font-medium text-slate-800">
-                                ♿ {{ v.adaptacao_pcd }}
+                            <td class="px-6 py-4 text-xs font-medium text-slate-800">
+                                <span class="text-blue-700 font-bold">♿</span> {{ v.adaptacao_pcd }}
                             </td>
-                            <td class="px-6 py-4 font-bold text-slate-900">
+                            <td class="px-6 py-4 font-black text-slate-900">
                                 R$ {{ "%.2f"|format(v.valor_diaria) }}
                             </td>
                             <td class="px-6 py-4">
-                                <span class="px-2.5 py-1 text-xs rounded-full font-bold {% if v.status == 'Disponível' %}bg-emerald-100 text-emerald-800{% elif v.status == 'Locado' %}bg-amber-100 text-amber-800{% else %}bg-rose-100 text-rose-800{% endif %}">
+                                <span class="px-2.5 py-1 text-xs rounded-full font-bold {% if v.status == 'Disponível' %}bg-emerald-100 text-emerald-800 border border-emerald-300{% elif v.status == 'Locado' %}bg-amber-100 text-amber-800 border border-amber-300{% else %}bg-rose-100 text-rose-800 border border-rose-300{% endif %}">
                                     {{ v.status }}
                                 </span>
                             </td>
@@ -86,4 +98,3 @@
 
 </div>
 {% endblock %}
-

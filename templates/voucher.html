@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block title %}Voucher de Reserva {{ reserva.codigo }} | MobilityPrime{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto space-y-6">
+
+    <!-- Barra Superior de Navegação e Ações (Oculta na Impressão) -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 no-print pb-2 border-b border-slate-200">
+        <div>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span> Reserva Emitida com Sucesso
+            </span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Comprovante de Reserva & Voucher</h1>
+            <p class="text-xs sm:text-sm text-slate-600">Apresente este localizador no momento do check-in para liberação do veículo adaptado.</p>
+        </div>
+        
+        <div class="flex items-center gap-3">
+            <button onclick="window.print()" 
+                    class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-slate-900 hover:bg-slate-800 shadow-sm hover:shadow transition-all duration-200 gap-2">
+                <span>🖨️</span> <span>Imprimir / Salvar PDF</span>
+            </button>
+            <a href="{{ url_for('reservas') }}" 
+               class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 transition-colors">
+                ← Voltar
+            </a>
+        </div>
+    </div>
+
+    <!-- CARTÃO DO VOUCHER / BILHETE ELETRÔNICO -->
+    <div class="bg-white rounded-2xl shadow-xl border border-slate-200/80 overflow-hidden print:shadow-none print:border-slate-300">
+        
+        <!-- Cabeçalho do Bilhete -->
+        <div class="bg-gradient-to-r from-navy-950 via-navy-900 to-slate-900 text-white p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">♿🌱</span>
+                    <span class="text-xl font-black tracking-tight text-white">Mobility<span class="text-sky-400 font-light">Prime</span></span>
+                    <span class="text-[10px] uppercase font-bold tracking-widest bg-sky-900/60 text-sky-200 px-2.5 py-0.5 rounded-full border border-sky-700">Oficial</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">Voucher de Locação Acessível & Faturamento Centralizado</p>
+            </div>
+            
+            <div class="text-left sm:text-right bg-slate-800/80 p-3 sm:p-4 rounded-xl border border-slate-700 w-full sm:w-auto">
+                <span class="text-[10px] uppercase font-semibold text-slate-400 block tracking-widest">Código Localizador</span>
+                <span class="text-2xl sm:text-3xl font-mono font-black text-sky-300 tracking-wider block mt-0.5">{{ reserva.codigo }}</span>
+                <span class="text-[11px] text-emerald-400 font-medium">Situação: {{ reserva.status }}</span>
+            </div>
+        </div>
+
+        <!-- Linha Perfurada Decorativa de Bilhete -->
+        <div class="relative bg-slate-100 h-4 flex items-center justify-between px-3 border-y border-dashed border-slate-300">
+            <span class="text-[9px] uppercase tracking-widest text-slate-600 font-mono font-bold">BILHETE ELETRÔNICO DE MOBILIDADE • PROGRAMA UFMS DIGITAL</span>
+            <span class="text-[9px] text-slate-600 font-mono font-bold hidden sm:inline">AUTENTICAÇÃO: MP-{{ reserva.codigo }}-2026</span>
+        </div>
+
+        <!-- Corpo Principal do Voucher -->
+        <div class="p-6 sm:p-8 space-y-6">
+            
+            <!-- Grid 1: Locatário e Veículo -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Informações do Locatário / Condutor -->
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <span>👤</span> Dados do Locatário / Condutor
+                    </h2>
+                    <div class="space-y-2">
+                        <div>
+                            <span class="text-xs text-slate-500 block">Nome do Titular</span>
+                            <strong class="text-base font-bold text-slate-900">{{ reserva.cliente }}</strong>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-500 block">Perfil de Acessibilidade (PCD)</span>
+                            <span class="inline-flex items-center gap-1 text-xs font-bold text-sky-900 bg-sky-100/80 px-2.5 py-1 rounded-md border border-sky-200 mt-1">
+                                ♿ {{ reserva.tipo_necessidade }}
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-500 block">Data de Emissão do Voucher</span>
+                            <span class="text-xs font-medium text-slate-700">{{ reserva.data_emissao }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informações do Veículo Alocado -->
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <span>🚗</span> Automóvel & Tecnologia Assistiva
+                    </h2>
+                    <div class="space-y-2">
+                        <div>
+                            <span class="text-xs text-slate-500 block">Modelo do Veículo</span>
+                            <strong class="text-base font-bold text-slate-900">{{ reserva.veiculo }}</strong>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-500 block">Categoria Ecológica</span>
+                            <span class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 mt-0.5">
+                                🌱 {{ reserva.categoria }}
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-500 block">Taxa Diária Base</span>
+                            <span class="text-sm font-bold text-slate-800">R$ {{ "%.2f"|format(reserva.diaria_valor) }} / dia</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Grid 2: Cronograma da Locação e Retirada -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-navy-900 text-white p-5 rounded-xl">
+                <div>
+                    <span class="text-[11px] text-slate-400 uppercase font-semibold block tracking-wider">Retirada Agendada</span>
+                    <strong class="text-lg font-bold text-white block mt-0.5">{{ reserva.data_retirada }}</strong>
+                    <span class="text-xs text-sky-300 font-medium">Horário: {{ reserva.horario_retirada }}h</span>
+                </div>
+                <div>
+                    <span class="text-[11px] text-slate-400 uppercase font-semibold block tracking-wider">Devolução Prevista</span>
+                    <strong class="text-lg font-bold text-white block mt-0.5">{{ reserva.data_devolucao }}</strong>
+                    <span class="text-xs text-sky-300 font-medium">Horário: Até às 18:00h</span>
+                </div>
+                <div>
+                    <span class="text-[11px] text-slate-400 uppercase font-semibold block tracking-wider">Total de Diárias</span>
+                    <strong class="text-lg font-bold text-emerald-400 block mt-0.5">{{ reserva.dias }} diária(s)</strong>
+                    <span class="text-xs text-slate-400">Tarifa sem franquia extra</span>
+                </div>
+            </div>
+
+            <!-- Ponto Físico de Retirada -->
+            <div class="bg-amber-50/70 p-4 rounded-xl border border-amber-200/80 flex items-start gap-3">
+                <span class="text-xl">📍</span>
+                <div>
+                    <h3 class="text-xs font-bold text-amber-900 uppercase tracking-wide">Ponto de Retirada do Veículo</h3>
+                    <p class="text-sm font-semibold text-slate-800 mt-0.5">{{ reserva.local_retirada }}</p>
+                    <p class="text-xs text-slate-600 mt-1">
+                        Apresente a Carteira Nacional de Habilitação (CNH com observação de restrição médica se condutor) e este comprovante digital ou impresso.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Demonstrativo Financeiro -->
+            <div class="border-t border-slate-200 pt-5">
+                <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Demonstrativo Financeiro & Faturamento</h3>
+                <div class="space-y-2 text-sm text-slate-600">
+                    <div class="flex justify-between items-center py-1">
+                        <span>Diárias contratadas ({{ reserva.dias }}x R$ {{ "%.2f"|format(reserva.diaria_valor) }})</span>
+                        <span class="font-medium text-slate-900">{{ reserva.total }}</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1">
+                        <span>Instalação e Calibração de Kit Assistivo PCD</span>
+                        <span class="font-bold text-emerald-700">R$ 0,00 (Gratuito / Ação Extensionista)</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1">
+                        <span>Seguro Obrigatório Contra Terceiros e Avarias</span>
+                        <span class="font-medium text-slate-700">Incluso no plano</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-3 border-t border-slate-200 text-base sm:text-lg">
+                        <span class="font-black text-slate-900">Total Faturado no Contrato</span>
+                        <strong class="font-black text-2xl text-emerald-700">{{ reserva.total }}</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Código de Barras / QR Code Simulado e Autenticação -->
+            <div class="pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+                <div class="space-y-1">
+                    <span class="text-[10px] text-slate-400 uppercase tracking-widest block font-mono">CÓDIGO DE BARRAS DE CHECK-IN RÁPIDO</span>
+                    <!-- Simulação de Código de Barras elegante com CSS -->
+                    <div class="inline-flex items-center gap-[3px] bg-white p-2 border border-slate-300 rounded shadow-inner">
+                        <div class="w-1.5 h-10 bg-slate-900"></div>
+                        <div class="w-0.5 h-10 bg-slate-900"></div>
+                        <div class="w-2 h-10 bg-slate-900"></div>
+                        <div class="w-1 h-10 bg-slate-900"></div>
+                        <div class="w-0.5 h-10 bg-slate-900"></div>
+                        <div class="w-2.5 h-10 bg-slate-900"></div>
+                        <div class="w-1 h-10 bg-slate-900"></div>
+                        <div class="w-0.5 h-10 bg-slate-900"></div>
+                        <div class="w-2 h-10 bg-slate-900"></div>
+                        <div class="w-1.5 h-10 bg-slate-900"></div>
+                        <div class="w-0.5 h-10 bg-slate-900"></div>
+                        <div class="w-2 h-10 bg-slate-900"></div>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500 block">789-LOC-2026-UFMS-DIGITAL</span>
+                </div>
+                
+                <div class="text-xs text-slate-400 max-w-xs">
+                    <p class="font-semibold text-slate-600">UFMS Digital • Projeto Integrador</p>
+                    <p class="text-[11px] mt-0.5">Voucher gerado eletronicamente com validação de regras de negócio e rastreabilidade para inspeção de software.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Botões Inferiores de Ação (Ocultos na Impressão) -->
+    <div class="flex justify-between items-center no-print pt-2">
+        <a href="{{ url_for('dashboard') }}" class="text-xs font-bold text-sky-800 hover:text-sky-950 transition-colors flex items-center gap-1">
+            <span>←</span> Ir para o Painel Gerencial
+        </a>
+        <a href="{{ url_for('reservas') }}" class="text-xs font-bold text-slate-600 hover:text-slate-900 transition-colors">
+            Fazer outra reserva →
+        </a>
+    </div>
+
+</div>
+{% endblock %}
+

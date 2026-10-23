@@ -1,10 +1,14 @@
-# SISTEMA DE GESTÃO PARA LOCAÇÃO DE VEÍCULOS COM FOCO EM MOBILIDADE INCLUSIVA E SUSTENTÁVEL
+# SISTEMA DE GESTÃO PARA LOCAÇÃO DE VEÍCULOS COM FOCO EM MOBILIDADE INCLUSIVA E SUSTENTÁVEL (MobilityPrime)
+
+> ⚠️ **AVISO ÉTICO E DECLARAÇÃO PEDAGÓGICA (USO DE INTELIGÊNCIA ARTIFICIAL E CENÁRIOS FICTÍCIOS):**  
+> Este projeto foi concebido, estruturado e desenvolvido com o auxílio de ferramentas de **Inteligência Artificial (AI)** como apoio técnico e pedagógico. Trata-se de um trabalho estritamente acadêmico e extensionista desenvolvido para o **Projeto Integrador de Tecnologia da Informação** do **Programa de Extensão UFMS Digital**.  
+> **Todos os dados apresentados nesta plataforma** — incluindo valores de faturamento bruto, custos operacionais de manutenção, fluxo de caixa, relatórios contábeis, nomes de clientes, locais de atendimento, contratos de locação, códigos localizadores e placas — **são puramente FICTÍCIOS e correspondem a simulações didáticas**, não guardando relação com operações financeiras ou comerciais de locadoras reais.
 
 ---
 
 ## 🎓 Identificação Acadêmica e Extensionista
 * **Instituição / Programa:** Programa de Extensão UFMS Digital (Código: 95DX7.200525)
-* **Disciplina:** Projeto Integrador de Tecnologia da Informação II
+* **Disciplina:** Projeto Integrador de Tecnologia da Informação II & III
 * **Estudante:** Raul de Moura Junqueira Rios
 * **Curso:** Curso Superior de Tecnologia da Informação
 * **Semestre Letivo:** 2026.2
@@ -13,36 +17,52 @@
 
 ---
 
-## 📌 Visão Geral do Projeto
-No cenário das locadoras de veículos de médio porte no município de Campo Grande (MS), a dependência de processos manuais e planilhas descentralizadas compromete a acurácia do faturamento, a conciliação bancária e o provisionamento de custos de manutenção de frota. Além disso, clientes com deficiência física (PCD) enfrentam grande dificuldade de acesso a veículos adaptados com equipamentos assistivos homologados.
+## 📌 Visão Geral da Solução
+No mercado de locação de veículos de médio porte no município de Campo Grande (MS), a dependência de processos manuais e planilhas descentralizadas compromete a integridade do fluxo de caixa e o faturamento, ao passo que motoristas e passageiros com deficiência física (PCD) encontram dificuldades severas para localizar e alugar veículos com tecnologia assistiva homologada (acelerador/freio manual, pomo giratório, inversão de pedais e rampas traseiras de acesso).
 
-Este projeto consiste em uma **aplicação web dinâmica e responsiva** desenvolvida com o microframework Python **Flask**, **HTML5 semântico** e **Tailwind CSS**. A solução unifica:
-1. **Painel Gerencial e Financeiro:** Controle em tempo real do faturamento bruto, custos operacionais, apuração de lucro líquido e acompanhamento de indicadores de sustentabilidade (redução de CO₂).
-2. **Portal Acessível de Reservas:** Interface projetada sob diretrizes de acessibilidade (WCAG 2.1 AA) para solicitação e cálculo de reservas de veículos com adaptações assistivas (acelerador/freio manual, pomo de volante, rampa de acesso, inversão de pedais).
-3. **Gestão da Frota:** Inventário e monitoramento de disponibilidade de veículos elétricos/híbridos e kits de adaptação assistiva.
+A plataforma **MobilityPrime** é uma aplicação web full stack dinâmica, responsiva e acessível, desenvolvida em **Python Flask**, **HTML5 semântico** e estilizada com **Tailwind CSS**, integrando a gestão contábil-operacional à inclusão social e à sustentabilidade:
+1. **Painel Gerencial & Financeiro:** Apuração em tempo real de receitas de locação, custos de calibração de kits assistivos, margem líquida e indicadores ambientais (redução de emissão de CO₂).
+2. **Portal Acessível de Reservas:** Interface projetada sob padrões **WCAG 2.1 nível AA**, permitindo a reserva de modelos com filtros de adaptações assistivas e validação temporal rígida.
+3. **Emissão de Voucher Digital com Localizador Oficial:** Módulo dedicado (`/voucher/<codigo>`) que emite um bilhete eletrônico detalhado para o locatário com dados do veículo, kit PCD, vigência da locação, demonstrativo tarifário, código de barras para check-in e recurso de impressão/PDF.
+4. **Gestão de Frota & Kits Assistivos:** Inventário detalhado de modelos elétricos, híbridos e a combustão com monitoramento de kits assistivos certificados.
+
+---
+
+## 🎨 Identidade Visual e Experiência do Usuário (UX/UI)
+* **Paleta de Cores Corporativa:**
+  * **Navy Noturno (`#0B132B` / `#070B18`):** Transmite solidez, autoridade institucional e contraste visual elevado.
+  * **Azul Safira / Real (`#1D4ED8` / `#2563EB`):** Ações primárias, foco acessível e interatividade.
+  * **Esmeralda / Eco (`#047857` / `#059669`):** Destaque aos indicadores ecológicos de baixa emissão de CO₂ e veículos elétricos.
+  * **Slate Suave (`#F8FAFC` com bordas `#E2E8F0`):** Leitura descansada e estética limpa para tabelas e painéis analíticos.
+* **Transições Fluidas:** Efeito sutil de *fade-in* (`page-transition`) entre telas e microinterações de elevação nos cartões.
+* **Responsividade Multi-Dispositivo:** Design testado para smartphones (com menu hambúrguer dinâmico), tablets e monitores de alta resolução.
+* **Fidelidade Fotográfica:** Imagens automotivas de alta resolução estritamente alinhadas a cada carroceria (SUV, Minivan com rampa, Hatch elétrico, Sedan executivo).
 
 ---
 
 ## 🛠️ Tecnologias Empregadas
-* **Back-End:** Python 3.10+ / Flask (Roteamento, validações, sessões e renderização dinâmica).
-* **Front-End:** HTML5 Semântico, CSS3 responsivo e classes utilitárias via Tailwind CSS CDN.
-* **Motor de Templates:** Jinja2 (Injeção de dados dinâmicos, controle de fluxo e herança de layouts).
-* **Acessibilidade:** Padrões WCAG 2.1 AA, atributos WAI-ARIA, contraste visual otimizado e links de salto (*skip-link*).
+* **Back-End:** Python 3.10+ / Microframework Flask (roteamento dinâmico, regras de negócio e validações).
+* **Front-End:** HTML5 Semântico, Tailwind CSS (via CDN customizado com paleta exclusiva) e JavaScript vanilla leve.
+* **Motor de Templates:** Jinja2 (layouts modulares com herança de templates e injeção de dados).
+* **Acessibilidade:** Padrões W3C / WCAG 2.1 AA (skip-links para teclado, atributos WAI-ARIA, etiquetas de formulário semânticas e contraste superior a 4.5:1).
+* **Deploy e Hospedagem:** Pronto para publicação contínua no GitHub e Vercel (com `vercel.json` configurado).
 
 ---
 
 ## 📂 Estrutura de Diretórios
 ```text
 Projeto Integrador II/
-├── app.py                  # Ponto de entrada, rotas Flask, regras de negócio e dados simulados
-├── requirements.txt        # Dependências do ecossistema Python (Flask)
-├── .gitignore              # Configuração de arquivos ignorados no versionamento Git
-├── README.md               # Documentação técnica e acadêmica do projeto
-└── templates/              # Camada de visualização (Jinja2 + HTML5)
-    ├── base.html           # Layout base acessível com cabeçalho, navegação e rodapé
-    ├── dashboard.html      # Painel financeiro, fluxo de caixa e recomendações gerenciais
-    ├── reservas.html       # Portal público de reservas de veículos PCD e sustentáveis
-    └── frota.html          # Inventário de veículos e status de kits de acessibilidade
+├── app.py                  # Servidor Flask, rotas, regras de negócio, dados fictícios e vouchers
+├── vercel.json             # Configuração para deploy serverless na Vercel (Python WSGI)
+├── requirements.txt        # Dependências do Python (Flask>=2.3.0)
+├── .gitignore              # Regras de exclusão do Git
+├── README.md               # Documentação técnica, acadêmica e declaração de uso de IA
+└── templates/              # Templates Jinja2
+    ├── base.html           # Layout mestre executivo com menu responsivo e acessibilidade
+    ├── dashboard.html      # Painel financeiro, taxa de ocupação PCD e recomendações
+    ├── reservas.html       # Portal público de reservas com catálogo de veículos e kits PCD
+    ├── voucher.html        # Comprovante / Voucher oficial de reserva com localizador e impressão
+    └── frota.html          # Inventário de veículos e status operacional dos kits assistivos
 ```
 
 ---
@@ -50,70 +70,35 @@ Projeto Integrador II/
 ## 🚀 Como Executar o Projeto Localmente
 
 ### 1. Pré-requisitos
-Certifique-se de possuir o **Python 3.10** ou superior instalado em seu sistema operacional.
+Certifique-se de possuir o **Python 3.10+** e o **Git** instalados.
 
-### 2. Clonar ou Baixar o Repositório
+### 2. Clonar o Repositório
 ```bash
 git clone https://github.com/SEU-USUARIO/projeto-integrador-locadora-pcd.git
 cd "Projeto Integrador II"
 ```
 
-### 3. Criar e Ativar o Ambiente Virtual (Opcional, mas Recomendado)
-* **No Windows (PowerShell):**
-  ```powershell
-  python -m venv venv
-  .\venv\Scripts\Activate.ps1
-  ```
-* **No Linux / macOS:**
-  ```bash
-  python3 -m venv venv
-  source venv/bin/activate
-  ```
-
-### 4. Instalar as Dependências
+### 3. Instalar Dependências
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5. Iniciar o Servidor Web da Aplicação
+### 4. Executar o Servidor Local
 ```bash
 python app.py
 ```
 
-### 6. Acessar no Navegador
-Abra seu navegador de preferência e acesse o endereço local:
-👉 **`http://127.0.0.1:5000`**
+### 5. Acessar no Navegador
+Abra: **`http://127.0.0.1:5000`**
 
 ---
 
-## 💻 Funcionalidades Implementadas
-
-### 📊 1. Painel de Controle Financeiro (`/`)
-* Apresentação dos cartões de métricas: **Faturamento Bruto**, **Custos de Manutenção Assistiva** e **Resultado Líquido**.
-* Indicador de **Taxa de Ocupação de Veículos PCD** (com alerta de capacidade acima de 80%).
-* Acompanhamento de metas de sustentabilidade (unidades ecológicas ativas e estimativa de CO₂ poupado).
-* Recomendações práticas gerenciais geradas dinamicamente para apoio à tomada de decisão.
-* Histórico recente de locações registradas com status de faturamento.
-
-### ♿ 2. Portal Acessível de Reservas (`/reservas`)
-* Vitrine de veículos detalhando categorias ecológicas (Híbrido Flex, Elétrico Puro) e kits de tecnologia assistiva instalados.
-* Formulário de reserva com validação rigorosa de datas (bloqueio de devoluções anteriores à retirada).
-* Cálculo dinâmico do valor total da locação com base na quantidade de diárias.
-* Notificações visuais e semânticas com atributos `aria-live` para leitores de tela.
-
-### 🚗 3. Inventário de Frota & Kits PCD (`/frota`)
-* Tabela analítica dos veículos com status de disponibilidade (Disponível, Locado, Em Manutenção).
-* Especificação da tecnologia assistiva vinculada a cada chassi/modelo.
+## 🔗 Rastreabilidade Acadêmica (Projetos Integradores I, II e III)
+* **Projeto Integrador I:** Mapeamento de problemas em Campo Grande/MS, levantamento de requisitos de acessibilidade PCD e sustentabilidade.
+* **Projeto Integrador II:** Implementação da aplicação web funcional com Flask, Jinja2, Tailwind CSS e geração de vouchers de reserva.
+* **Projeto Integrador III:** Execução da **Inspeção Formal de Artefatos** (requisitos, arquitetura e código), catalogação de defeitos de concorrência e validações temporais, e implementação das soluções de saneamento.
 
 ---
 
-## 🔗 Rastreabilidade e Evolução no Projeto Integrador
-* **Projeto Integrador I:** Definição do problema em Campo Grande/MS, mapeamento de stakeholders e especificação dos requisitos funcionais voltados à inclusão PCD e sustentabilidade.
-* **Projeto Integrador II:** Implementação da aplicação web dinâmica em Flask com front-end acessível (Tailwind CSS) e painel financeiro.
-* **Projeto Integrador III:** Execução da **Inspeção Formal de Artefatos** (requisitos, arquitetura e código), identificação e saneamento de defeitos de concorrência, validações temporais e conformidade WCAG 2.1 AA.
-
----
-
-## 📄 Licença
-Este projeto foi desenvolvido para fins estritamente acadêmicos e extensionistas no âmbito do **Programa de Extensão UFMS Digital**.
-
+## 📄 Licença e Termos de Uso
+Desenvolvido por **Raul de Moura Junqueira Rios** para fins didáticos, avaliativos e extensionistas no **Programa de Extensão UFMS Digital (95DX7.200525)**.
