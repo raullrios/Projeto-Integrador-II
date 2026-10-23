@@ -6,6 +6,12 @@
 
 ---
 
+## 🌐 Demonstração Online na Nuvem (Vercel)
+Acesse a aplicação em produção diretamente pelo navegador:  
+👉 **[Painel Gerencial e Financeiro | MobilityPrime](https://projetointegradorii.vercel.app/)**
+
+---
+
 ## 🎓 Identificação Acadêmica e Extensionista
 * **Instituição / Programa:** Programa de Extensão UFMS Digital (Código: 95DX7.200525)
 * **Disciplina:** Projeto Integrador de Tecnologia da Informação II & III
@@ -20,7 +26,7 @@
 ## 📌 Visão Geral da Solução
 No mercado de locação de veículos de médio porte no município de Campo Grande (MS), a dependência de processos manuais e planilhas descentralizadas compromete a integridade do fluxo de caixa e o faturamento, ao passo que motoristas e passageiros com deficiência física (PCD) encontram dificuldades severas para localizar e alugar veículos com tecnologia assistiva homologada (acelerador/freio manual, pomo giratório, inversão de pedais e rampas traseiras de acesso).
 
-A plataforma **MobilityPrime** é uma aplicação web full stack dinâmica, responsiva e acessível, desenvolvida em **Python Flask**, **HTML5 semântico** e estilizada com **Tailwind CSS**, integrando a gestão contábil-operacional à inclusão social e à sustentabilidade:
+A plataforma **MobilityPrime** é uma aplicação web full stack dinâmica, responsiva e acessível, desenvolvida em **Python Flask**, **HTML5 semântico** e estilizada com **Tailwind CSS** sob a paleta **Esmeralda / Eco Corporativa**, integrando a gestão contábil-operacional à inclusão social e à sustentabilidade:
 1. **Painel Gerencial & Financeiro:** Apuração em tempo real de receitas de locação, custos de calibração de kits assistivos, margem líquida e indicadores ambientais (redução de emissão de CO₂).
 2. **Portal Acessível de Reservas:** Interface projetada sob padrões **WCAG 2.1 nível AA**, permitindo a reserva de modelos com filtros de adaptações assistivas e validação temporal rígida.
 3. **Emissão de Voucher Digital com Localizador Oficial:** Módulo dedicado (`/voucher/<codigo>`) que emite um bilhete eletrônico detalhado para o locatário com dados do veículo, kit PCD, vigência da locação, demonstrativo tarifário, código de barras para check-in e recurso de impressão/PDF.
@@ -29,10 +35,10 @@ A plataforma **MobilityPrime** é uma aplicação web full stack dinâmica, resp
 ---
 
 ## 🎨 Identidade Visual e Experiência do Usuário (UX/UI)
-* **Paleta de Cores Corporativa:**
-  * **Navy Noturno (`#0B132B` / `#070B18`):** Transmite solidez, autoridade institucional e contraste visual elevado.
-  * **Azul Safira / Real (`#1D4ED8` / `#2563EB`):** Ações primárias, foco acessível e interatividade.
-  * **Esmeralda / Eco (`#047857` / `#059669`):** Destaque aos indicadores ecológicos de baixa emissão de CO₂ e veículos elétricos.
+* **Paleta de Cores Esmeralda / Eco Corporativa:**
+  * **Verde Floresta Noturno (`#042F2E` / `#022C22`):** Autoridade institucional, solidez e contraste de nível executivo.
+  * **Esmeralda Corporativo (`#059669` / `#10B981`):** Ações primárias, foco acessível e ênfase na sustentabilidade ecológica.
+  * **Verde Menta Suave (`#F0FDF4` com bordas `#BBF7D0`):** Destaque aos indicadores de baixa emissão de CO₂ e kits assistivos PCD.
   * **Slate Suave (`#F8FAFC` com bordas `#E2E8F0`):** Leitura descansada e estética limpa para tabelas e painéis analíticos.
 * **Transições Fluidas:** Efeito sutil de *fade-in* (`page-transition`) entre telas e microinterações de elevação nos cartões.
 * **Responsividade Multi-Dispositivo:** Design testado para smartphones (com menu hambúrguer dinâmico), tablets e monitores de alta resolução.
@@ -42,10 +48,10 @@ A plataforma **MobilityPrime** é uma aplicação web full stack dinâmica, resp
 
 ## 🛠️ Tecnologias Empregadas
 * **Back-End:** Python 3.10+ / Microframework Flask (roteamento dinâmico, regras de negócio e validações).
-* **Front-End:** HTML5 Semântico, Tailwind CSS (via CDN customizado com paleta exclusiva) e JavaScript vanilla leve.
+* **Front-End:** HTML5 Semântico, Tailwind CSS (via CDN customizado com paleta Esmeralda / Eco) e JavaScript vanilla leve.
 * **Motor de Templates:** Jinja2 (layouts modulares com herança de templates e injeção de dados).
 * **Acessibilidade:** Padrões W3C / WCAG 2.1 AA (skip-links para teclado, atributos WAI-ARIA, etiquetas de formulário semânticas e contraste superior a 4.5:1).
-* **Deploy e Hospedagem:** Pronto para publicação contínua no GitHub e Vercel (com `vercel.json` configurado).
+* **Deploy e Hospedagem:** Publicação contínua no GitHub e Vercel (com `vercel.json` configurado).
 
 ---
 
@@ -69,27 +75,29 @@ Projeto Integrador II/
 
 ## 🚀 Como Executar o Projeto Localmente
 
-### 1. Pré-requisitos
-Certifique-se de possuir o **Python 3.10+** e o **Git** instalados.
+### 1. Visualização Direta na Nuvem (Sem Instalação)
+Você pode testar a aplicação em tempo real diretamente pelo link de produção na Vercel:  
+👉 **[Painel Gerencial e Financeiro | MobilityPrime](https://projetointegradorii.vercel.app/)**
 
-### 2. Clonar o Repositório
-```bash
-git clone https://github.com/SEU-USUARIO/projeto-integrador-locadora-pcd.git
-cd "Projeto Integrador II"
-```
+### 2. Execução Local na sua Máquina
+Caso deseje clonar e rodar o código-fonte em seu ambiente de desenvolvimento:
 
-### 3. Instalar Dependências
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Executar o Servidor Local
-```bash
-python app.py
-```
-
-### 5. Acessar no Navegador
-Abra: **`http://127.0.0.1:5000`**
+* **Pré-requisitos:** Certifique-se de possuir o **Python 3.10+** e o **Git** instalados.
+* **Clonar o Repositório:**
+  ```bash
+  git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+  cd "Projeto Integrador II"
+  ```
+* **Instalar Dependências:**
+  ```bash
+  pip install -r requirements.txt
+  ```
+* **Executar o Servidor Local:**
+  ```bash
+  python app.py
+  ```
+* **Acessar no Navegador:**
+  Abra: **`http://127.0.0.1:5000`**
 
 ---
 

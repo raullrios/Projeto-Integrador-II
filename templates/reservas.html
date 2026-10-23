@@ -8,8 +8,8 @@
     <!-- Cabeçalho do Portal de Reservas -->
     <div class="pb-6 border-b border-slate-200">
         <div class="flex items-center gap-2">
-            <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-900 border border-blue-200">
-                ♿ Mobilidade Inclusiva & Verde
+            <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-900 border border-emerald-200">
+                🌱♿ Mobilidade Inclusiva & Sustentável
             </span>
             <span class="text-xs text-slate-500">Isenção de taxa de kit assistivo</span>
         </div>
@@ -17,7 +17,7 @@
             Portal Acessível de Reservas Veiculares
         </h1>
         <p class="text-xs sm:text-sm text-slate-600 mt-1">
-            Selecione veículos especialmente adaptados com comandos manuais, rampas de embarque ou tração 100% elétrica. Ao concluir, um voucher eletrônico será gerado instantaneamente.
+            Selecione veículos especialmente adaptados com comandos manuais, rampas de embarque ou propulsão limpa (híbrida e elétrica). Ao confirmar, seu voucher eletrônico será emitido instantaneamente.
         </p>
     </div>
 
@@ -31,7 +31,7 @@
                     <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
                         <span>📝</span> Solicitar Nova Reserva
                     </h2>
-                    <span class="text-[11px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Check-in Digital</span>
+                    <span class="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Check-in Digital</span>
                 </div>
                 
                 <form action="{{ url_for('reservas') }}" method="POST" class="mt-5 space-y-4">
@@ -43,7 +43,7 @@
                         </label>
                         <input type="text" id="campo-cliente" name="cliente" required 
                                placeholder="Ex: Carlos Eduardo da Silva"
-                               class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm shadow-sm placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all">
+                               class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm shadow-sm placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 transition-all">
                     </div>
 
                     <!-- Campo: Necessidade Assistiva -->
@@ -52,7 +52,7 @@
                             Equipamento Assistivo Necessário (PCD) *
                         </label>
                         <select id="campo-necessidade" name="tipo_necessidade" required
-                                class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all">
+                                class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 transition-all">
                             <option value="Condutor PCD - Acelerador/Freio Manual">Condutor PCD - Acelerador e Freio Manual (Puxa-Empurra)</option>
                             <option value="Condutor PCD - Pomo Giratório e Satélite">Condutor PCD - Pomo Giratório no Volante + Satélite</option>
                             <option value="Passageiro Cadeirante - Rampa Traseira">Passageiro Cadeirante - Rampa de Acesso Traseira</option>
@@ -67,7 +67,7 @@
                             Automóvel Desejado *
                         </label>
                         <select id="campo-veiculo" name="veiculo_id" required
-                                class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all">
+                                class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 transition-all">
                             {% for v in veiculos %}
                                 <option value="{{ v.id }}" {% if v.status != 'Disponível' %}disabled class="text-slate-400 bg-slate-100"{% endif %}>
                                     {{ v.modelo }} - R$ {{ "%.2f"|format(v.valor_diaria) }}/dia {% if v.status != 'Disponível' %}({{ v.status }}){% endif %}
@@ -83,14 +83,14 @@
                                 Data Retirada *
                             </label>
                             <input type="date" id="campo-retirada" name="data_retirada" required
-                                   class="mt-1.5 block w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600">
+                                   class="mt-1.5 block w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600">
                         </div>
                         <div>
                             <label for="campo-devolucao" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                                 Data Devolução *
                             </label>
                             <input type="date" id="campo-devolucao" name="data_devolucao" required
-                                   class="mt-1.5 block w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600">
+                                   class="mt-1.5 block w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600">
                         </div>
                     </div>
 
@@ -100,7 +100,7 @@
                             Horário Previsto para Retirada
                         </label>
                         <select id="campo-horario" name="horario_retirada"
-                                class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600">
+                                class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600">
                             <option value="08:30">08:30h (Manhã)</option>
                             <option value="10:00" selected>10:00h (Manhã)</option>
                             <option value="14:00">14:00h (Tarde)</option>
@@ -110,7 +110,7 @@
 
                     <div class="pt-2">
                         <button type="submit" 
-                                class="w-full flex justify-center items-center py-3 px-4 rounded-xl shadow-md text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-blue-700 via-indigo-700 to-sky-700 hover:from-blue-800 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200">
+                                class="w-full flex justify-center items-center py-3 px-4 rounded-xl shadow-md text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-700 hover:from-emerald-700 hover:to-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-200">
                             Confirmar Reserva & Emitir Voucher
                         </button>
                     </div>
@@ -133,7 +133,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {% for v in veiculos %}
-                    <article class="bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden flex flex-col justify-between hover:shadow-lg hover:border-slate-300 transition-all duration-300 group">
+                    <article class="bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden flex flex-col justify-between hover:shadow-lg hover:border-emerald-300 transition-all duration-300 group">
                         
                         <!-- Imagem do Veículo com Fallback e Badge de Status -->
                         <div class="relative h-48 bg-slate-800 overflow-hidden">
@@ -141,7 +141,7 @@
                                  alt="Fotografia do automóvel {{ v.modelo }}" 
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                  loading="lazy"
-                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80';">
+                                 onerror="this.onerror=null; this.src='{{ v.foto_fallback }}';">
                             
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
 
@@ -153,7 +153,7 @@
                             </div>
 
                             <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center text-white">
-                                <span class="px-2.5 py-1 text-[11px] rounded-lg bg-navy-950/80 backdrop-blur-md font-semibold ring-1 ring-white/10">
+                                <span class="px-2.5 py-1 text-[11px] rounded-lg bg-forest-950/80 backdrop-blur-md font-semibold ring-1 ring-white/10 text-emerald-200">
                                     🌱 {{ v.emissao_co2 }}
                                 </span>
                             </div>
@@ -162,13 +162,13 @@
                         <!-- Detalhes do Automóvel -->
                         <div class="p-5 flex-grow flex flex-col justify-between">
                             <div>
-                                <span class="text-[11px] font-bold text-blue-700 uppercase tracking-widest block">{{ v.categoria }}</span>
+                                <span class="text-[11px] font-bold text-emerald-700 uppercase tracking-widest block">{{ v.categoria }}</span>
                                 <h3 class="text-base font-extrabold text-slate-900 mt-1">{{ v.modelo }}</h3>
                                 
-                                <div class="mt-3.5 bg-slate-50 p-3 rounded-xl border border-slate-200/70">
-                                    <span class="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider block">Equipamento Assistivo Instalado:</span>
+                                <div class="mt-3.5 bg-emerald-50/60 p-3 rounded-xl border border-emerald-100">
+                                    <span class="text-[10px] font-extrabold text-emerald-800 uppercase tracking-wider block">Equipamento Assistivo Instalado:</span>
                                     <p class="text-xs font-semibold text-slate-800 mt-1 flex items-start gap-1.5">
-                                        <span class="text-blue-700">♿</span>
+                                        <span class="text-emerald-700">♿</span>
                                         <span>{{ v.adaptacao_pcd }}</span>
                                     </p>
                                 </div>
@@ -179,7 +179,7 @@
                                     <span class="text-[11px] text-slate-400 block font-medium">Diária Regular</span>
                                     <span class="text-xl font-black text-slate-900">R$ {{ "%.2f"|format(v.valor_diaria) }}</span>
                                 </div>
-                                <span class="text-xs text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200 font-bold">
+                                <span class="text-xs text-emerald-800 bg-emerald-100/70 px-2.5 py-1 rounded-lg border border-emerald-300 font-bold">
                                     Zero taxa de adaptação
                                 </span>
                             </div>
@@ -218,7 +218,7 @@
                 <tbody class="divide-y divide-slate-100">
                     {% for r in reservas %}
                         <tr class="hover:bg-slate-50/80 transition-colors">
-                            <td class="px-6 py-4 font-mono font-bold text-blue-700">
+                            <td class="px-6 py-4 font-mono font-bold text-emerald-700">
                                 <a href="{{ url_for('voucher', codigo=r.codigo) }}" class="hover:underline flex items-center gap-1.5">
                                     <span>🎟️</span> {{ r.codigo }}
                                 </a>
@@ -231,13 +231,13 @@
                             <td class="px-6 py-4 text-xs text-slate-500">{{ r.periodo }} ({{ r.dias }} dias)</td>
                             <td class="px-6 py-4 font-black text-emerald-700">{{ r.total }}</td>
                             <td class="px-6 py-4">
-                                <span class="px-2.5 py-1 text-xs rounded-full font-bold {% if r.status == 'Confirmada' %}bg-sky-100 text-sky-800 border border-sky-300{% elif r.status == 'Em Andamento' %}bg-amber-100 text-amber-800 border border-amber-300{% else %}bg-emerald-100 text-emerald-800 border border-emerald-300{% endif %}">
+                                <span class="px-2.5 py-1 text-xs rounded-full font-bold {% if r.status == 'Confirmada' %}bg-emerald-100 text-emerald-800 border border-emerald-300{% elif r.status == 'Em Andamento' %}bg-amber-100 text-amber-800 border border-amber-300{% else %}bg-teal-100 text-teal-800 border border-teal-300{% endif %}">
                                     {{ r.status }}
                                 </span>
                             </td>
                             <td class="px-6 py-4 text-center">
                                 <a href="{{ url_for('voucher', codigo=r.codigo) }}" 
-                                   class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-lg shadow-sm transition-colors">
+                                   class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-white bg-forest-900 hover:bg-forest-800 rounded-lg shadow-sm transition-colors">
                                     <span>Ver Voucher</span>
                                 </a>
                             </td>

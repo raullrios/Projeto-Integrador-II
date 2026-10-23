@@ -4,7 +4,7 @@ from flask import Flask, flash, redirect, render_template, request, url_for
 app = Flask(__name__)
 app.secret_key = "projeto_integrador_gestao_locadora_key_ufms"
 
-# Dados simulados da frota inclusiva e sustentável com imagens automotivas coerentes
+# Dados simulados da frota inclusiva e sustentável preparados para imagens locais .webp em static/img/
 VEICULOS = [
     {
         "id": 1,
@@ -14,7 +14,8 @@ VEICULOS = [
         "emissao_co2": "82 g/km (Baixa Emissão)",
         "status": "Disponível",
         "valor_diaria": 220.00,
-        "foto": "https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=800&q=80"
+        "foto": "/static/img/corolla-cross.webp",
+        "foto_fallback": "https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=800&q=80"
     },
     {
         "id": 2,
@@ -24,7 +25,8 @@ VEICULOS = [
         "emissao_co2": "115 g/km",
         "status": "Locado",
         "valor_diaria": 260.00,
-        "foto": "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=800&q=80"
+        "foto": "/static/img/spin.webp",
+        "foto_fallback": "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=800&q=80"
     },
     {
         "id": 3,
@@ -34,7 +36,8 @@ VEICULOS = [
         "emissao_co2": "0 g/km (Zero Emissão)",
         "status": "Disponível",
         "valor_diaria": 240.00,
-        "foto": "https://images.unsplash.com/photo-1536700503339-1e4b06520771?auto=format&fit=crop&w=800&q=80"
+        "foto": "/static/img/byd-dolphin.webp",
+        "foto_fallback": "https://images.unsplash.com/photo-1536700503339-1e4b06520771?auto=format&fit=crop&w=800&q=80"
     },
     {
         "id": 4,
@@ -44,7 +47,8 @@ VEICULOS = [
         "emissao_co2": "98 g/km",
         "status": "Disponível",
         "valor_diaria": 190.00,
-        "foto": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=800&q=80"
+        "foto": "/static/img/honda-city.webp",
+        "foto_fallback": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=800&q=80"
     },
     {
         "id": 5,
@@ -54,7 +58,8 @@ VEICULOS = [
         "emissao_co2": "0 g/km (Zero Emissão)",
         "status": "Em Manutenção Preventiva",
         "valor_diaria": 210.00,
-        "foto": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80"
+        "foto": "/static/img/renault-zoe.webp",
+        "foto_fallback": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80"
     }
 ]
 

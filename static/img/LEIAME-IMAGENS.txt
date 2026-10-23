@@ -1,0 +1,28 @@
+========================================================================
+PASTA DE IMAGENS DOS VEÍCULOS (FORMATO .WEBP) - MOBILITYPRIME
+========================================================================
+
+Basta colar as imagens baixadas e convertidas em .webp nesta pasta
+(static/img/) com os seguintes nomes de arquivo:
+
+1. Toyota Corolla Cross Hybrid:
+   -> corolla-cross.webp
+
+2. Chevrolet Spin Premier 7L Adaptada:
+   -> spin.webp
+
+3. BYD Dolphin EV 100% Elétrico:
+   -> byd-dolphin.webp
+
+4. Honda City Sedan Touring:
+   -> honda-city.webp
+
+5. Renault Zoe E-Tech 100% Elétrico:
+   -> renault-zoe.webp
+
+------------------------------------------------------------------------
+Observação:
+A aplicação já está configurada para carregar automaticamente esses
+arquivos desta pasta (/static/img/<nome-do-carro>.webp).
+========================================================================
+
