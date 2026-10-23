@@ -1,0 +1,305 @@
+{% extends 'base.html' %}
+
+{% block title %}MobilityPrime | Locação Inclusiva de Veículos PCD & Frota Sustentável{% endblock %}
+
+{% block content %}
+<div class="space-y-16 sm:space-y-24">
+
+    <!-- HERO SECTION DE APRESENTAÇÃO INSTITUCIONAL -->
+    <section class="relative overflow-hidden pt-6 pb-12 sm:pt-12 sm:pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-4xl mx-auto space-y-6">
+                
+                <!-- Badge Superior -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-300 text-emerald-900 text-xs sm:text-sm font-semibold shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                    <span class="font-title uppercase tracking-wider text-[11px] sm:text-xs">Locadora do Futuro • Campo Grande - MS</span>
+                </div>
+
+                <!-- Título Principal em Orbitron -->
+                <h1 class="font-title text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+                    MOBILIDADE SEM LIMITES.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-600 to-emerald-600">
+                        CONDUÇÃO COM PROPÓSITO.
+                    </span>
+                </h1>
+
+                <!-- Subtítulo em Jura -->
+                <p class="text-base sm:text-xl text-slate-600 leading-relaxed font-medium max-w-3xl mx-auto">
+                    A primeira plataforma integrada que une <strong>tecnologia assistiva homologada para pessoas com deficiência (PCD)</strong> à mais avançada <strong>frota sustentável com emissão zero e híbridos</strong>. Segurança, autonomia e respeito ao meio ambiente.
+                </p>
+
+                <!-- Botões de Ação Principal (Touch target mínimo de 48px para Lighthouse) -->
+                <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="{{ url_for('reservas') }}" 
+                       class="font-title w-full sm:w-auto min-h-[52px] inline-flex items-center justify-center px-8 py-3.5 rounded-2xl text-sm font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 hover:from-emerald-500 hover:to-teal-500 shadow-xl shadow-emerald-900/20 hover:shadow-emerald-700/30 transition-all duration-300 transform hover:-translate-y-0.5 border border-emerald-400/40">
+                        ⚡ Cotar Locação / Reservar
+                    </a>
+                    <a href="{{ url_for('dashboard') }}" 
+                       class="font-title w-full sm:w-auto min-h-[52px] inline-flex items-center justify-center px-7 py-3.5 rounded-2xl text-sm font-bold uppercase tracking-wider text-emerald-950 bg-emerald-50/80 hover:bg-emerald-100 border border-emerald-300 shadow-sm hover:shadow transition-all duration-200">
+                        📊 Painel Financeiro & Frota
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CARROSSEL DE IMAGENS INTERATIVO (INCLUSÃO PCD & EFICIÊNCIA ENERGÉTICA) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Apresentação Visual da Frota">
+        
+        <div class="relative bg-forest-950 rounded-3xl overflow-hidden shadow-2xl border border-emerald-900/80">
+            
+            <!-- Slides Container -->
+            <div id="carousel-slides" class="relative min-h-[460px] sm:min-h-[520px]">
+                
+                <!-- SLIDE 1: Condutor PCD ao volante (BYD Dolphin adaptado) -->
+                <div class="carousel-slide absolute inset-0 opacity-100 transition-opacity duration-700 flex flex-col justify-end p-6 sm:p-12" data-index="0">
+                    <img src="{{ carrossel[0].imagem }}" 
+                         alt="{{ carrossel[0].imagem_alt }}" 
+                         width="1400" 
+                         height="700"
+                         fetchpriority="high"
+                         class="absolute inset-0 w-full h-full object-cover opacity-35 filter brightness-95">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/60 to-transparent"></div>
+                    
+                    <div class="relative z-10 max-w-2xl space-y-3">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="font-title text-[10px] sm:text-xs uppercase tracking-widest bg-emerald-500 text-forest-950 px-3 py-1 rounded-full font-black">
+                                {{ carrossel[0].badge }}
+                            </span>
+                            <span class="text-xs bg-forest-900/80 text-emerald-300 px-3 py-1 rounded-full border border-emerald-600/40 font-medium">
+                                {{ carrossel[0].tag_eco }}
+                            </span>
+                            <span class="text-xs bg-forest-900/80 text-teal-300 px-3 py-1 rounded-full border border-teal-600/40 font-medium">
+                                {{ carrossel[0].tag_pcd }}
+                            </span>
+                        </div>
+                        <h2 class="font-title text-2xl sm:text-4xl font-black text-white tracking-tight leading-snug">
+                            {{ carrossel[0].titulo }}
+                        </h2>
+                        <p class="text-sm sm:text-base text-emerald-100/90 leading-relaxed max-w-xl">
+                            {{ carrossel[0].subtitulo }}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SLIDE 2: Eficiência Energética na Estrada / Harmonia Ambiental -->
+                <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 pointer-events-none flex flex-col justify-end p-6 sm:p-12" data-index="1">
+                    <img src="{{ carrossel[1].imagem }}" 
+                         alt="{{ carrossel[1].imagem_alt }}" 
+                         width="1400" 
+                         height="700"
+                         loading="lazy"
+                         decoding="async"
+                         class="absolute inset-0 w-full h-full object-cover opacity-35 filter brightness-95">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/60 to-transparent"></div>
+                    
+                    <div class="relative z-10 max-w-2xl space-y-3">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="font-title text-[10px] sm:text-xs uppercase tracking-widest bg-teal-400 text-forest-950 px-3 py-1 rounded-full font-black">
+                                {{ carrossel[1].badge }}
+                            </span>
+                            <span class="text-xs bg-forest-900/80 text-emerald-300 px-3 py-1 rounded-full border border-emerald-600/40 font-medium">
+                                {{ carrossel[1].tag_eco }}
+                            </span>
+                            <span class="text-xs bg-forest-900/80 text-teal-300 px-3 py-1 rounded-full border border-teal-600/40 font-medium">
+                                {{ carrossel[1].tag_pcd }}
+                            </span>
+                        </div>
+                        <h2 class="font-title text-2xl sm:text-4xl font-black text-white tracking-tight leading-snug">
+                            {{ carrossel[1].titulo }}
+                        </h2>
+                        <p class="text-sm sm:text-base text-emerald-100/90 leading-relaxed max-w-xl">
+                            {{ carrossel[1].subtitulo }}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Controles do Carrossel (Botões com toque de 48px para Lighthouse) -->
+            <div class="absolute bottom-6 right-6 z-20 flex items-center gap-2">
+                <button id="carousel-prev" type="button" aria-label="Slide anterior"
+                        class="min-w-[48px] min-h-[48px] bg-forest-900/80 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center border border-emerald-700/60 shadow-lg transition-colors focus:ring-2 focus:ring-emerald-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button id="carousel-next" type="button" aria-label="Próximo slide"
+                        class="min-w-[48px] min-h-[48px] bg-forest-900/80 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center border border-emerald-700/60 shadow-lg transition-colors focus:ring-2 focus:ring-emerald-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+
+            <!-- Indicadores (Dots) -->
+            <div class="absolute top-6 right-6 z-20 flex gap-2">
+                <button class="carousel-dot w-8 h-2 rounded-full bg-emerald-400 transition-all duration-300" data-slide="0" aria-label="Ir para slide 1"></button>
+                <button class="carousel-dot w-2 h-2 rounded-full bg-emerald-900/80 transition-all duration-300" data-slide="1" aria-label="Ir para slide 2"></button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- INDICADORES DE IMPACTO EM TEMPO REAL -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 text-center hover:border-emerald-300 transition-colors">
+                <span class="font-title text-2xl sm:text-4xl font-black text-slate-900 block">{{ destaques.veiculos_ativos }}</span>
+                <span class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wider mt-1 block">Veículos Homologados</span>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 text-center hover:border-emerald-300 transition-colors">
+                <span class="font-title text-2xl sm:text-4xl font-black text-emerald-700 block">{{ destaques.taxa_ocupacao_pcd }}</span>
+                <span class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wider mt-1 block">Taxa Ocupação PCD</span>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 text-center hover:border-emerald-300 transition-colors">
+                <span class="font-title text-2xl sm:text-4xl font-black text-teal-700 block">{{ destaques.emissoes_poupadas }}</span>
+                <span class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wider mt-1 block">Redução de CO₂</span>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 text-center hover:border-emerald-300 transition-colors">
+                <span class="font-title text-2xl sm:text-4xl font-black text-forest-900 block">100%</span>
+                <span class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wider mt-1 block">Conformidade WCAG 2.1</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS DA MOBILITYPRIME -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="font-title text-2xl sm:text-3xl font-black text-slate-900">
+                POR QUE ESCOLHER A MOBILITYPRIME?
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 mt-2">
+                Arquitetura pensada nos mínimos detalhes para eliminar barreiras físicas e digitais.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/80 hover:shadow-md hover:border-emerald-400 transition-all duration-300 space-y-4">
+                <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-2xl text-emerald-800 font-bold">
+                    ♿
+                </div>
+                <h3 class="font-title text-lg font-bold text-slate-900">Kits Assistivos Homologados</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Acelerador e freio manual puxa-empurra, pomo no volante e rampas traseiras instaladas e calibradas com rigor técnico. Sem cobrança de taxa adicional pelo kit.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/80 hover:shadow-md hover:border-emerald-400 transition-all duration-300 space-y-4">
+                <div class="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center text-2xl text-teal-800 font-bold">
+                    ⚡
+                </div>
+                <h3 class="font-title text-lg font-bold text-slate-900">Frota 100% Limpa & Econômica</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Veículos elétricos puros como BYD Dolphin e Renault Zoe, além de híbridos flex como Corolla Cross. Economia de até 68% em combustível e zero ruído.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/80 hover:shadow-md hover:border-emerald-400 transition-all duration-300 space-y-4">
+                <div class="w-14 h-14 bg-forest-900/10 rounded-2xl flex items-center justify-center text-2xl text-forest-900 font-bold">
+                    🎟️
+                </div>
+                <h3 class="font-title text-lg font-bold text-slate-900">Check-in Ágil com Voucher</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Emissão instantânea do comprovante e localizador eletrônico com demonstrativo financeiro e código de barras para retirada imediata sem burocracia.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION FINAL -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <div class="bg-gradient-to-r from-forest-950 via-forest-900 to-emerald-950 rounded-3xl p-8 sm:p-14 text-white text-center space-y-6 border border-emerald-800/80 shadow-2xl">
+            <h2 class="font-title text-2xl sm:text-4xl font-black tracking-tight max-w-2xl mx-auto">
+                PRONTO PARA EXPERIMENTAR UMA CONDUÇÃO LIVRE E SUSTENTÁVEL?
+            </h2>
+            <p class="text-emerald-200 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+                Faça sua cotação online agora mesmo com cálculo automático de diárias e garantia de reserva exclusiva para o seu kit assistivo.
+            </p>
+            <div class="pt-2">
+                <a href="{{ url_for('reservas') }}" 
+                   class="font-title min-h-[50px] inline-flex items-center justify-center px-8 py-3.5 rounded-2xl text-sm font-extrabold uppercase tracking-wider text-forest-950 bg-gradient-to-r from-emerald-400 to-teal-300 hover:from-emerald-300 hover:to-teal-200 shadow-xl transition-all duration-300 transform hover:scale-105">
+                    ⚡ Iniciar Cotação de Locação
+                </a>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- SCRIPT DO CARROSSEL (LEVE, ACESSÍVEL E SEM DEPENDÊNCIAS EXTERNAS) -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const btnPrev = document.getElementById('carousel-prev');
+        const btnNext = document.getElementById('carousel-next');
+        let currentSlide = 0;
+        let autoplayTimer = null;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('opacity-0', 'pointer-events-none');
+                    slide.classList.add('opacity-100');
+                } else {
+                    slide.classList.remove('opacity-100');
+                    slide.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('w-2', 'bg-emerald-900/80');
+                    dot.classList.add('w-8', 'bg-emerald-400');
+                } else {
+                    dot.classList.remove('w-8', 'bg-emerald-400');
+                    dot.classList.add('w-2', 'bg-emerald-900/80');
+                }
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }
+
+        function prevSlide() {
+            let prev = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(prev);
+        }
+
+        if (btnNext) btnNext.addEventListener('click', () => { nextSlide(); resetAutoplay(); });
+        if (btnPrev) btnPrev.addEventListener('click', () => { prevSlide(); resetAutoplay(); });
+
+        dots.forEach((dot) => {
+            dot.addEventListener('click', function() {
+                const idx = parseInt(this.getAttribute('data-slide'));
+                showSlide(idx);
+                resetAutoplay();
+            });
+        });
+
+        function startAutoplay() {
+            autoplayTimer = setInterval(nextSlide, 6000);
+        }
+
+        function resetAutoplay() {
+            clearInterval(autoplayTimer);
+            startAutoplay();
+        }
+
+        startAutoplay();
+    });
+</script>
+{% endblock %}
+

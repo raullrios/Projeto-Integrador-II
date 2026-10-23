@@ -120,6 +120,40 @@ RESERVAS = [
 
 
 @app.route('/')
+def home():
+    """Página Inicial / Apresentação Institucional da MobilityPrime com Carrossel e Cotação"""
+    destaques = {
+        "veiculos_ativos": 18,
+        "taxa_ocupacao_pcd": "82%",
+        "emissoes_poupadas": "1.450 kg CO₂",
+        "clientes_atendidos": 142
+    }
+    carrossel = [
+        {
+            "id": 1,
+            "badge": "Inclusão & Alta Tecnologia",
+            "titulo": "Praticidade & Autonomia ao Volante",
+            "subtitulo": "Experimente o BYD Dolphin 100% Elétrico adaptado com pomo giratório de comando satélite e acelerador assistivo, unindo ergonomia e emissão zero.",
+            "imagem": "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1400&q=80",
+            "imagem_alt": "Condutor utilizando comandos adaptados em veículo elétrico contemporâneo",
+            "tag_eco": "⚡ 100% Elétrico • Zero Emissão",
+            "tag_pcd": "♿ Kit Satélite Homologado"
+        },
+        {
+            "id": 2,
+            "badge": "Eficiência Energética & ESG",
+            "titulo": "Condução Sustentável sem Barreiras",
+            "subtitulo": "Mobilidade verde nas rodovias e avenidas de Campo Grande. Motores híbridos e elétricos de alta eficiência que reduzem custos operacionais e protegem o planeta.",
+            "imagem": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80",
+            "imagem_alt": "Veículo elétrico moderno percorrendo estrada com eficiência energética em meio à natureza",
+            "tag_eco": "🌱 Redução de 82 g/km CO₂",
+            "tag_pcd": "🛡️ Condução Estável & Segura"
+        }
+    ]
+    return render_template('index.html', destaques=destaques, carrossel=carrossel, veiculos=VEICULOS[:3])
+
+
+@app.route('/dashboard')
 def dashboard():
     """Painel Gerencial e Financeiro de Controle de Frota"""
     relatorio_mensal = {
