@@ -123,7 +123,7 @@ RESERVAS = [
 def home():
     """Página Inicial / Apresentação Institucional da MobilityPrime com Carrossel e Cotação"""
     destaques = {
-        "veiculos_ativos": 18,
+        "veiculos_ativos": 10,
         "taxa_ocupacao_pcd": "82%",
         "emissoes_poupadas": "1.450 kg CO₂",
         "clientes_atendidos": 142
@@ -155,13 +155,13 @@ def home():
 
 @app.route('/dashboard')
 def dashboard():
-    """Painel Gerencial e Financeiro de Controle de Frota"""
+    """Painel de Transparência, Sustentabilidade e Prestação de Contas"""
     relatorio_mensal = {
         "receita_bruta": "R$ 45.200,00",
         "custos_manutencao": "R$ 8.400,00",
         "lucro_liquido": "R$ 36.800,00",
         "taxa_ocupacao_pcd": "82%",
-        "frota_sustentavel_ativa": 14,
+        "frota_sustentavel_ativa": 10,
         "total_locacoes_mes": 38,
         "media_dias_locacao": "5.4 dias",
         "reducao_co2_estimada": "1.450 kg"
@@ -185,6 +185,9 @@ def dashboard():
 @app.route('/reservas', methods=['GET', 'POST'])
 def reservas():
     """Portal Público e Acessível para Reserva de Veículos Inclusivos"""
+    hoje = datetime.now().date()
+    hoje_iso = hoje.strftime("%Y-%m-%d")
+
     if request.method == 'POST':
         cliente = request.form.get('cliente', '').strip()
         veiculo_id = request.form.get('veiculo_id')
@@ -208,9 +211,14 @@ def reservas():
             flash("Formato de data inválido.", "error")
             return redirect(url_for('reservas'))
 
-        # Validação temporal rigorosa de integridade
+        # Validação de data no passado / retroativa
+        if d_retirada.date() < hoje:
+            flash("Data inválida: A data de retirada não pode ser anterior ao dia de hoje.", "error")
+            return redirect(url_for('reservas'))
+
+        # Validação temporal: devolução anterior à retirada
         if d_devolucao < d_retirada:
-            flash("Erro de validação: A data de devolução não pode ser anterior à data de retirada.", "error")
+            flash("Data inválida: A data de devolução não pode ser anterior à data de retirada.", "error")
             return redirect(url_for('reservas'))
 
         dias = (d_devolucao - d_retirada).days
@@ -245,7 +253,7 @@ def reservas():
         flash(f"Reserva {codigo_reserva} confirmada com sucesso! Seu voucher digital foi emitido.", "success")
         return redirect(url_for('voucher', codigo=codigo_reserva))
 
-    return render_template('reservas.html', veiculos=VEICULOS, reservas=RESERVAS)
+    return render_template('reservas.html', veiculos=VEICULOS, reservas=RESERVAS, hoje_iso=hoje_iso)
 
 
 @app.route('/voucher/<codigo>')

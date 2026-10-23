@@ -76,20 +76,20 @@
                         </select>
                     </div>
 
-                    <!-- Datas: Retirada e Devolução -->
+                    <!-- Datas: Retirada e Devolução com Bloqueio de Datas Anteriores (min) -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
                             <label for="campo-retirada" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                                 Data Retirada *
                             </label>
-                            <input type="date" id="campo-retirada" name="data_retirada" required
+                            <input type="date" id="campo-retirada" name="data_retirada" required min="{{ hoje_iso }}"
                                    class="mt-1.5 block w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600">
                         </div>
                         <div>
                             <label for="campo-devolucao" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                                 Data Devolução *
                             </label>
-                            <input type="date" id="campo-devolucao" name="data_devolucao" required
+                            <input type="date" id="campo-devolucao" name="data_devolucao" required min="{{ hoje_iso }}"
                                    class="mt-1.5 block w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm shadow-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600">
                         </div>
                     </div>
@@ -249,4 +249,36 @@
     </section>
 
 </div>
+
+<!-- SCRIPT DE VALIDAÇÃO DE DATAS EM TEMPO REAL -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputRetirada = document.getElementById('campo-retirada');
+        const inputDevolucao = document.getElementById('campo-devolucao');
+        const hoje = new Date().toISOString().split('T')[0];
+
+        if (inputRetirada && inputDevolucao) {
+            inputRetirada.min = hoje;
+            inputDevolucao.min = hoje;
+
+            inputRetirada.addEventListener('change', function() {
+                if (this.value < hoje) {
+                    alert("⚠️ Data Inválida: Não é possível selecionar uma data de retirada anterior ao dia de hoje.");
+                    this.value = hoje;
+                }
+                inputDevolucao.min = this.value;
+                if (inputDevolucao.value && inputDevolucao.value < this.value) {
+                    inputDevolucao.value = this.value;
+                }
+            });
+
+            inputDevolucao.addEventListener('change', function() {
+                if (this.value < inputRetirada.value) {
+                    alert("⚠️ Data Inválida: A data de devolução não pode ser anterior à data de retirada.");
+                    this.value = inputRetirada.value;
+                }
+            });
+        }
+    });
+</script>
 {% endblock %}

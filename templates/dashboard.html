@@ -1,70 +1,70 @@
 {% extends 'base.html' %}
 
-{% block title %}Painel Gerencial e Financeiro | MobilityPrime{% endblock %}
+{% block title %}Painel de Transparência & Impacto ESG | MobilityPrime{% endblock %}
 
 {% block content %}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
-    <!-- Cabeçalho do Painel com Identificação e Ação Rápida -->
+    <!-- Cabeçalho do Painel de Transparência -->
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-slate-200 gap-4">
         <div>
             <div class="flex items-center gap-2">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
-                    <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span> Sistema Ativo (Mês Vigente)
+                    <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span> Transparência Pública & Auditoria ESG
                 </span>
-                <span class="text-xs text-slate-500 font-mono">Última conciliação: Hoje às 18:00</span>
+                <span class="text-xs text-slate-500 font-mono">Dados consolidados do mês vigente</span>
             </div>
-            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1.5">
-                Painel de Controle Financeiro & Operacional
+            <h1 class="font-title text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-1.5">
+                PAINEL DE TRANSPARÊNCIA & IMPACTO SOCIOAMBIENTAL
             </h1>
-            <p class="text-xs sm:text-sm text-slate-600 mt-1">
-                Monitoramento consolidado de faturamento, conciliação de receitas, custos de calibração assistiva e metas ecológicas da frota.
+            <p class="text-xs sm:text-sm text-slate-600 mt-1 max-w-3xl">
+                Espaço aberto de prestação de contas para que clientes, parceiros e a sociedade acompanhem em tempo real o quanto a MobilityPrime beneficia o meio ambiente com a redução de emissões e viabiliza a inclusão social de pessoas com deficiência.
             </p>
         </div>
         
         <div class="flex items-center gap-3">
             <a href="{{ url_for('reservas') }}" 
-               class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl shadow-md text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-700 hover:from-emerald-700 hover:to-teal-800 transition-all duration-200">
-                + Nova Reserva Acessível
+               class="font-title inline-flex items-center justify-center px-5 py-2.5 rounded-xl shadow-md text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-700 hover:from-emerald-700 hover:to-teal-800 transition-all duration-200">
+                + Cotar Locação
             </a>
         </div>
     </div>
 
-    <!-- Indicadores Financeiros Centrais (Cards Executivos) -->
+    <!-- Indicadores Financeiros Centrais com Foco em Reinvestimento Social -->
     <section aria-labelledby="titulo-resumo-financeiro">
-        <h2 id="titulo-resumo-financeiro" class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-            <span>💵</span> Demonstração Financeira Mensal
+        <h2 id="titulo-resumo-financeiro" class="font-title text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <span>💵</span> Balanço de Recursos & Sustentabilidade
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             <!-- Card: Faturamento Bruto -->
             <article class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 border-t-4 border-t-emerald-600 hover:shadow-md transition-all duration-300">
                 <div class="flex items-center justify-between">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Faturamento Bruto</h3>
+                    <h3 class="font-title text-xs font-bold text-slate-500 uppercase tracking-wider">Faturamento Operacional</h3>
                     <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">+12% vs. mês anterior</span>
                 </div>
-                <p class="text-3xl sm:text-4xl font-black text-slate-900 mt-3 tracking-tight">{{ dados.receita_bruta }}</p>
-                <p class="text-xs text-slate-500 mt-2">Receitas apuradas de locações com faturamento centralizado.</p>
+                <p class="font-title text-3xl sm:text-4xl font-black text-slate-900 mt-3 tracking-tight">{{ dados.receita_bruta }}</p>
+                <p class="text-xs text-slate-500 mt-2">Receitas de locações operadas com faturamento centralizado.</p>
             </article>
 
-            <!-- Card: Custos e Manutenção Assistiva -->
+            <!-- Card: Reinvestimento em Acessibilidade e Manutenção -->
             <article class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 border-t-4 border-t-rose-600 hover:shadow-md transition-all duration-300">
                 <div class="flex items-center justify-between">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Custos & Calibração de Kits</h3>
+                    <h3 class="font-title text-xs font-bold text-slate-500 uppercase tracking-wider">Reinvestimento em Kits PCD</h3>
                     <span class="text-xs font-semibold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">Revisão Periódica</span>
                 </div>
-                <p class="text-3xl sm:text-4xl font-black text-rose-700 mt-3 tracking-tight">{{ dados.custos_manutencao }}</p>
-                <p class="text-xs text-slate-500 mt-2">Manutenção preventiva em rampas e comandos manuais.</p>
+                <p class="font-title text-3xl sm:text-4xl font-black text-rose-700 mt-3 tracking-tight">{{ dados.custos_manutencao }}</p>
+                <p class="text-xs text-slate-500 mt-2">Recursos aplicados na calibração rigorosa de comandos manuais e rampas.</p>
             </article>
 
-            <!-- Card: Lucro Líquido Realizado (Acento Esmeralda) -->
+            <!-- Card: Saldo Líquido para Expansão da Frota Verde -->
             <article class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 border-t-4 border-t-teal-600 hover:shadow-md transition-all duration-300">
                 <div class="flex items-center justify-between">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Resultado Líquido</h3>
+                    <h3 class="font-title text-xs font-bold text-slate-500 uppercase tracking-wider">Fundo de Expansão Verde</h3>
                     <span class="text-xs font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">Margem: 81.4%</span>
                 </div>
-                <p class="text-3xl sm:text-4xl font-black text-teal-800 mt-3 tracking-tight">{{ dados.lucro_liquido }}</p>
-                <p class="text-xs text-slate-500 mt-2">Disponibilidade apurada para aquisição de novos kits PCD.</p>
+                <p class="font-title text-3xl sm:text-4xl font-black text-teal-800 mt-3 tracking-tight">{{ dados.lucro_liquido }}</p>
+                <p class="text-xs text-slate-500 mt-2">Saldo reservado para ampliação da frota de veículos 100% elétricos.</p>
             </article>
 
         </div>
