@@ -15,6 +15,12 @@ ENV/
 *.swp
 *.swo
 
+# Banco de Dados SQLite (Boas práticas: nunca versionar banco binário com dados locais)
+*.db
+*.sqlite
+*.sqlite3
+database.db
+
 # OS
 Thumbs.db
 .DS_Store

@@ -54,6 +54,7 @@ A plataforma **MobilityPrime** é uma aplicação web full stack dinâmica, resp
 
 ## 🛠️ Tecnologias Empregadas
 * **Back-End:** Python 3.10+ / Microframework Flask (roteamento dinâmico, regras de negócio e validações).
+* **Banco de Dados Relacional:** SQLite / SQL ANSI (Esquema relacional em `schema.sql` com integridade referencial via chaves estrangeiras entre `cliente`, `veiculo` e `reserva`).
 * **Front-End:** HTML5 Semântico, Tailwind CSS (via CDN customizado com paleta Esmeralda / Eco) e JavaScript vanilla leve.
 * **Motor de Templates:** Jinja2 (layouts modulares com herança de templates e injeção de dados).
 * **Acessibilidade:** Padrões W3C / WCAG 2.1 AA (skip-links para teclado, atributos WAI-ARIA, etiquetas de formulário semânticas e contraste superior a 4.5:1).
@@ -65,6 +66,7 @@ A plataforma **MobilityPrime** é uma aplicação web full stack dinâmica, resp
 ```text
 Projeto Integrador II/
 ├── app.py                  # Servidor Flask, rotas, regras de negócio, dados fictícios e vouchers
+├── schema.sql              # Script SQL com modelagem DDL (tabelas) e DML (carga de testes)
 ├── vercel.json             # Configuração para deploy serverless na Vercel (Python WSGI)
 ├── requirements.txt        # Dependências do Python (Flask>=2.3.0)
 ├── .gitignore              # Regras de exclusão do Git
